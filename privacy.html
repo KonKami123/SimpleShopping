@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — SimpleShopping</title>
+  <meta
+    name="description"
+    content="Plain-English Privacy Policy for SimpleShopping — Focus Shopper &amp; Deal Checker."
+  />
+  <style>
+    :root {
+      --bg: #22262e;
+      --surface: #2b303b;
+      --border: #3e4554;
+      --text: #f9fafb;
+      --text-muted: #c2c8d4;
+      --accent: #14b8a6;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(92vw, 840px);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: #0d9488;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    main {
+      padding: 44px 0 56px;
+    }
+
+    .policy-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px 32px;
+    }
+
+    @media (max-width: 640px) {
+      .policy-card {
+        padding: 24px 20px;
+      }
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .updated {
+      margin: 0 0 26px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    h2 {
+      margin: 26px 0 10px;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text-muted);
+    }
+
+    ul {
+      margin: 0 0 14px;
+      padding-left: 22px;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px 0 32px;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true">S</span>
+        <span>SimpleShopping</span>
+      </a>
+      <a href="index.html" style="font-weight: 600; text-decoration: none;">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="policy-card">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: November 18, 2026</p>
+
+      <p>
+        SimpleShopping — Focus Shopper &amp; Deal Checker is designed to respect your privacy. This policy explains in plain English how the browser extension handles data.
+      </p>
+
+      <h2>1. Local-Only Webpage Processing</h2>
+      <p>
+        SimpleShopping only runs when you explicitly click the extension's toolbar icon. It reads product and search listing details from the active webpage <strong>locally inside your browser</strong> to generate your Deal Verdict and red-flag checks.
+      </p>
+
+      <h2>2. No Browsing History Collection</h2>
+      <ul>
+        <li>SimpleShopping <strong>never collects, tracks, sells, or transmits</strong> your browsing history, page URLs, or shopping activity to external servers.</li>
+        <li>There are no third-party analytics scripts, advertising trackers, or background data harvesters in the extension.</li>
+      </ul>
+
+      <h2>3. Local-Only 30-Day Price History &amp; Preferences</h2>
+      <p>
+        Your 30-day price history (stored under <code>ssPriceHistory</code>) and your display/voice preferences—such as Dark Slate or Soft Light mode, custom text colours, text size, Dyslexia Spacing, Reading Spotlight, Verdict Tone (Quirky or Straight to the Point), Read Aloud voice/speed/volume, and Pro unlock status—are stored <strong>locally on your device</strong> using <code>chrome.storage.local</code>. Price history is automatically pruned after 30 days and never leaves your browser.
+      </p>
+
+      <h2>4. Click-Only Comparison Links &amp; Affiliate Disclosure</h2>
+      <p>
+        SimpleShopping offers optional buttons to check product images on <strong>Google Lens</strong> and compare prices on <strong>eBay UK</strong>, <strong>Argos</strong>, <strong>Currys</strong>, and <strong>Amazon UK</strong>. Comparison URLs are only resolved and opened when you explicitly click a button—no passive affiliate tags are injected into pages you browse.
+      </p>
+      <p>
+        As an Amazon Associate I earn from qualifying purchases. When you explicitly click the "Compare on Amazon UK" button, the opened search link includes our partner tag (<code>simplebrowsin-21</code>) at no extra cost to you. No personal data from SimpleShopping is sent to any retailer; each retailer's own privacy policy applies only if you choose to click through and visit their site.
+      </p>
+
+      <h2>5. SimpleShopping Pro Licence Verification</h2>
+      <p>
+        If you choose to purchase the optional £3 one-time SimpleShopping Pro upgrade via ExtensionPay, your paid status is verified and stored locally in <code>chrome.storage.local</code> so your Pro themes remain unlocked.
+      </p>
+
+      <h2>6. Contact</h2>
+      <p>
+        If you have any questions about this privacy policy or need help using SimpleShopping, please contact <a href="mailto:support@simplebrowsing.app">support@simplebrowsing.app</a>.
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      &copy; 2026 SimpleShopping &middot; <a href="index.html">Home</a> &middot; As an Amazon Associate I earn from qualifying purchases.
+    </div>
+  </footer>
+</body>
+</html>

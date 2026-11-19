@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SimpleShopping — Focus Shopper &amp; Deal Checker</title>
+  <meta
+    name="description"
+    content="SimpleShopping is a calm, plain-English Focus Shopper &amp; Deal Checker for Amazon UK, eBay UK, and online stores — with 30-day price checks, red-flag scam scanning, and accessibility tools."
+  />
+  <style>
+    :root {
+      --bg: #22262e;
+      --surface: #2b303b;
+      --surface-muted: #343a47;
+      --border: #3e4554;
+      --text: #f9fafb;
+      --text-muted: #c2c8d4;
+      --accent: #14b8a6;
+      --accent-hover: #0d9488;
+      --accent-text: #042f2e;
+      --accent-soft: rgba(20, 184, 166, 0.14);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(92vw, 1020px);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: #0d9488;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 4px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Sections & Smooth Anchor Offset */
+    section {
+      margin-bottom: 64px;
+    }
+
+    section[id] {
+      scroll-margin-top: 96px;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 56px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      margin: 0 0 28px;
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 140ms ease, border-color 140ms ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-text);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: var(--surface-muted);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    @media (max-width: 860px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        padding: 28px 22px;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 28px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    /* Dedicated SimpleBrowsing Pro Section */
+    .pro-section-card {
+      background: linear-gradient(180deg, rgba(20, 184, 166, 0.08), transparent 55%), var(--surface);
+      border: 2px solid var(--accent);
+      border-radius: 24px;
+      padding: 34px 32px;
+    }
+
+    @media (max-width: 640px) {
+      .pro-section-card {
+        padding: 26px 20px;
+      }
+    }
+
+    .pro-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      margin-bottom: 12px;
+    }
+
+    .pro-sub {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 720px;
+    }
+
+    .pro-feature-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .pro-feature-box p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .pro-callout {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 18px 22px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* Accessibility & Dyslexia Guide */
+    .guide-list {
+      margin: 14px 0 0;
+      padding-left: 22px;
+      color: var(--text-muted);
+    }
+
+    .guide-list li {
+      margin-bottom: 12px;
+    }
+
+    .guide-list strong {
+      color: var(--text);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 28px 0 36px;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-disclosure {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true">S</span>
+        <span>SimpleShopping</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#pro">Pro (£3)</a>
+        <a href="#guide">Shopping Guide</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">Chrome &amp; Edge Extension</span>
+        <h1>SimpleShopping — Focus Shopper &amp; Deal Checker</h1>
+        <p class="hero-sub">
+          A calm, plain-English shopping assistant for Amazon UK, eBay UK, and online stores. Spot fake RRP markups, keyboard-smash dropship brands, and sponsored clutter—with 30-day local price checks and accessibility controls.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#features">Explore Free Features</a>
+          <a class="btn btn-secondary" href="#pro">See SimpleShopping Pro (£3)</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Calm, Plain-English Deal Checking (100% Free)</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Deal Verdict &amp; Red-Flag Scanner</h3>
+          <p>
+            Separates genuine bargains from dodgy listings. Flags random all-caps dropship brands, low-review 5-star listings, inflated RRPs, and heavy sponsored search clutter—with both Quirky and Straight to the Point verdicts.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Local 30-Day Price Tracking</h3>
+          <p>
+            Automatically remembers prices you check locally in your browser (<code>chrome.storage.local</code>) over a rolling 30-day window and detects on-page "Lowest price in 30 days" claims.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Google Lens &amp; UK Price Comparisons</h3>
+          <p>
+            Check any product photo on Google Lens in one click, or compare prices across eBay UK, Argos, Currys, and Amazon UK with clean, click-only comparison buttons.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Accessibility, Dyslexia Comfort &amp; Read Aloud</h3>
+          <p>
+            Includes Dark Slate &amp; Soft Light modes, Dyslexia Spacing, Reading Spotlight, Text Size controls, and native Read Aloud speech synthesis so you can listen to any verdict hands-free.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pro">
+      <div class="pro-section-card">
+        <span class="pro-tag">Optional Lifetime Upgrade</span>
+        <h2>SimpleShopping Pro — One-Time £3 Lifetime Unlock</h2>
+        <p class="pro-sub">
+          No subscriptions, no recurring fees. Unlock once for £3 and restore your licence anytime via ExtensionPay.
+        </p>
+
+        <div class="grid-3">
+          <div class="pro-feature-box">
+            <h3>Custom Tinted Themes Gallery</h3>
+            <p>
+              Full access to Cosmic Nebula, Woodland Camo, Linen &amp; Gold, Art Deco Noir, Warm Sepia, High-Contrast Yellow, and the Custom Colour Wheel with automatic contrast balancing.
+            </p>
+          </div>
+
+          <div class="pro-feature-box">
+            <h3>Custom Background Colour Wheel</h3>
+            <p>
+              Pick any background tint that feels easiest on your eyes—contrast and surface colours adapt automatically.
+            </p>
+          </div>
+
+          <div class="pro-feature-box">
+            <h3>Support Independent Software</h3>
+            <p>
+              Upgrading helps keep all core Deal Verdict, 30-day price tracking, red-flag scanning, and Read Aloud tools 100% free for everyone.
+            </p>
+          </div>
+        </div>
+
+        <div class="pro-callout">
+          <strong>Privacy-First Shopping Helper:</strong> SimpleShopping runs only when you click the toolbar icon, stores price history locally on your device, and never injects passive tracking links.
+        </div>
+      </div>
+    </section>
+
+    <section id="guide">
+      <div class="card">
+        <h2>Calm, Scam-Free Shopping Guide</h2>
+        <p style="color: var(--text-muted); margin: 0 0 12px;">
+          Modern shopping sites pack fake countdowns, inflated RRPs, and paid sponsored ads onto every screen. A few quick checks help you shop with confidence:
+        </p>
+        <ul class="guide-list">
+          <li>
+            <strong>Watch Out for Keyboard-Smash Brands:</strong> Random all-caps names paired with 5-star reviews from a handful of buyers are often generic dropshipped items. Use "Check Photo on Google Lens" to see where else the exact photo appears.
+          </li>
+          <li>
+            <strong>Question Huge RRP Discounts:</strong> A 60%+ discount off an inflated "Was" price does not always mean a real bargain—check your 30-day tracked price history and compare across Argos, Currys, and eBay UK.
+          </li>
+          <li>
+            <strong>Filter Out Sponsored Clutter:</strong> On search pages, SimpleShopping groups clean organic results under "Worth a Look" and separates paid ads and red-flag listings under "Skip It".
+          </li>
+          <li>
+            <strong>Listen at Your Own Pace:</strong> Click "Read Verdict Aloud" to hear the deal summary read clearly using your browser's native voice.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span>&copy; 2026 SimpleShopping</span>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="mailto:support@simplebrowsing.app">support@simplebrowsing.app</a>
+        </div>
+      </div>
+      <p class="footer-disclosure">
+        As an Amazon Associate I earn from qualifying purchases.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
